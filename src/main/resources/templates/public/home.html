@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <th:block th:include="public/common/header::header"></th:block>
+</head>
+<body>
+    <div class="container">
+        <h1>This is a public Home Page</h1>
+
+        <a th:href="@{/login}">Click Here to Login</a>
+        <br/>
+        <a th:href="@{/register}">Click Here to Register</a>
+
+    </div>
+</body>
+</html>
