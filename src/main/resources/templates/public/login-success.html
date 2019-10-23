@@ -6,7 +6,9 @@
 <body>
 <div class="container">
     <h1>Login Successful....</h1>
-
+    <form th:action="@{/logout}" method="post">
+        <input type="submit" value="Click to logout" />
+    </form>
 </div>
 </body>
 </html>
