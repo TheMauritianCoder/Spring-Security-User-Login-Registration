@@ -1,4 +1,4 @@
-package services.ravi.user.crm.service;
+package services.ravi.user.crm.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -9,12 +9,13 @@ import services.ravi.user.crm.exception.EmailExistsException;
 import services.ravi.user.crm.model.User;
 import services.ravi.user.crm.repository.RoleRepository;
 import services.ravi.user.crm.repository.UserRepository;
+import services.ravi.user.crm.service.UserService;
 
 import javax.transaction.Transactional;
 import java.util.Arrays;
 
 @Service
-public class UserServiceImpl implements  UserService {
+public class UserServiceImpl implements UserService {
 
     @Autowired
     private UserRepository userRepository;
