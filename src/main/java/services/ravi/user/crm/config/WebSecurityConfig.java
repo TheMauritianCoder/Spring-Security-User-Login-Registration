@@ -9,6 +9,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import services.ravi.user.crm.constant.RequestMappingUrls;
 import services.ravi.user.crm.service.impl.MyUserDetailsService;
 
@@ -45,8 +46,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
             .and() // Adding new Rule.
                 .formLogin()
                     .loginPage(RequestMappingUrls.LOGIN) // The request mapping for the login form
-                    .defaultSuccessUrl(RequestMappingUrls.LOGIN_SUCCESS)
                     .loginProcessingUrl("/authenticateUser") // The URL to process the Login.
+                    .successHandler(myAuthenticationSuccessHandler())
                     .permitAll() // Every one can access the Login Form
                     .and() // Add new Rule.
                     .logout().permitAll() // Allow logout support (Default URL ==> /logout
@@ -54,5 +55,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .exceptionHandling()
                 .accessDeniedPage(RequestMappingUrls.LOGIN_FAILED) // When we have an access denied we will be redirected to that page.
         ;
+    }
+
+    @Bean
+    public AuthenticationSuccessHandler myAuthenticationSuccessHandler(){
+        return new UrlAuthenticationSuccessHandlerConfig();
     }
 }
