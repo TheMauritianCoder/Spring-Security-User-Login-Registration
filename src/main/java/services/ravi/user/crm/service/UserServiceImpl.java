@@ -38,6 +38,9 @@ public class UserServiceImpl implements  UserService {
         user.setPassword(bCryptPasswordEncoder.encode(userDto.getPassword()));
         user.setEmail(userDto.getEmail());
         user.setRoles(Arrays.asList(roleRepository.findByName(UserRoles.USER)));
+
+        // TODO: Replace static configuration of enabled by user email verification.
+        user.setEnabled(true);
         return userRepository.save(user);
     }
 

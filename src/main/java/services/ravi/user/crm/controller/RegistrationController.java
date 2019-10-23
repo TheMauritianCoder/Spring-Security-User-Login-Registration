@@ -45,7 +45,7 @@ public class RegistrationController extends AbstractViewController{
         }else{
             try{
                 userService.registerNewUser(userDto);
-                return new ModelAndView(ViewUrls.LOGIN_SUCCESS);
+                return new ModelAndView(ViewUrls.LOGIN);
             }catch (EmailExistsException e){
                 log.debug("An error occured while trying to save user: "+e.getMessage());
                 bindingResult.reject(ErrorCodes.REGISTRATION_FAIL_EMAIL_EXIST);
