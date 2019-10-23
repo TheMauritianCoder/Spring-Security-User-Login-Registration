@@ -41,7 +41,7 @@ public class RegistrationController extends AbstractViewController{
     @PostMapping
     public ModelAndView register(@ModelAttribute("user") @Valid UserDto userDto, BindingResult bindingResult, WebRequest request, Errors errors){
         if(bindingResult.hasErrors()){
-            return new ModelAndView(ViewUrls.REGISTER, "user", userDto);
+            return new ModelAndView(ViewUrls.REGISTER, ModelObjects.USER, userDto);
         }else{
             try{
                 userService.registerNewUser(userDto);
@@ -49,7 +49,7 @@ public class RegistrationController extends AbstractViewController{
             }catch (EmailExistsException e){
                 log.debug("An error occured while trying to save user: "+e.getMessage());
                 bindingResult.reject(ErrorCodes.REGISTRATION_FAIL_EMAIL_EXIST);
-                return new ModelAndView(ViewUrls.REGISTER, "user", userDto);
+                return new ModelAndView(ViewUrls.REGISTER, ModelObjects.USER, userDto);
             }
         }
     }
