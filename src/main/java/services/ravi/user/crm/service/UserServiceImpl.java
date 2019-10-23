@@ -9,7 +9,6 @@ import services.ravi.user.crm.exception.EmailExistsException;
 import services.ravi.user.crm.model.User;
 import services.ravi.user.crm.repository.RoleRepository;
 import services.ravi.user.crm.repository.UserRepository;
-import org.springframework.security.crypto.password.PasswordEncoder;
 
 import javax.transaction.Transactional;
 import java.util.Arrays;

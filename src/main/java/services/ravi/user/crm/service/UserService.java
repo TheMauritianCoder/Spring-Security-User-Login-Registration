@@ -7,4 +7,5 @@ import services.ravi.user.crm.model.User;
 public interface UserService {
 
     User registerNewUser(UserDto userDto) throws EmailExistsException;
+
 }
